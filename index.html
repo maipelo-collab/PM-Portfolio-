@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maipelo Letebele — PM Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --dark:#0A0A0A;
+  --navy:#1E2A3A;
+  --coral:#E8634A;
+  --gold:#C9A84C;
+  --teal:#00B4B4;
+  --mid:#888;
+  --white:#fff;
+  --cream:#FAF7F2;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);min-height:100vh;}
+
+/* HEADER */
+header{padding:80px 40px 0;max-width:1080px;margin:0 auto;}
+.tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--coral);margin-bottom:16px;display:block;}
+h1{font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,80px);font-weight:900;line-height:1.0;margin-bottom:16px;}
+h1 em{color:var(--coral);font-style:italic;}
+.sub{font-size:16px;color:rgba(255,255,255,0.5);max-width:520px;line-height:1.7;margin-bottom:48px;font-family:'DM Mono',monospace;}
+.divider{width:60px;height:2px;background:var(--coral);margin-bottom:64px;}
+
+/* CARDS GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1080px;margin:0 auto;padding:0 40px 80px;}
+@media(max-width:900px){.grid{grid-template-columns:1fr;padding:0 24px 60px;}}
+
+.card{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;transition:transform 0.25s;}
+.card:hover{transform:translateY(-6px);}
+
+/* WealthSpaces card */
+.card-ws{background:var(--navy);border:1px solid rgba(232,99,74,0.2);}
+.card-juice{background:#1A1208;border:1px solid rgba(201,168,76,0.2);}
+.card-minions{background:#0A1A1A;border:1px solid rgba(0,180,180,0.2);}
+
+.card-accent{height:3px;width:100%;}
+.acc-coral{background:var(--coral);}
+.acc-gold{background:var(--gold);}
+.acc-teal{background:var(--teal);}
+
+.card-body{padding:32px;}
+.card-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;display:block;}
+.num-coral{color:var(--coral);}
+.num-gold{color:var(--gold);}
+.num-teal{color:var(--teal);}
+
+.card-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:8px;}
+.card-period{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;margin-bottom:20px;}
+.card-desc{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.65;margin-bottom:28px;}
+
+.card-stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px;}
+.stat{text-align:center;}
+.stat-v{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;display:block;line-height:1;}
+.sv-coral{color:var(--coral);}
+.sv-gold{color:var(--gold);}
+.sv-teal{color:var(--teal);}
+.stat-l{font-size:10px;color:rgba(255,255,255,0.3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;}
+
+.card-cta{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;font-family:'DM Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;border-radius:8px;transition:all 0.2s;}
+.cta-coral{background:rgba(232,99,74,0.12);color:var(--coral);border:1px solid rgba(232,99,74,0.3);}
+.cta-coral:hover{background:var(--coral);color:var(--white);}
+.cta-gold{background:rgba(201,168,76,0.12);color:var(--gold);border:1px solid rgba(201,168,76,0.3);}
+.cta-gold:hover{background:var(--gold);color:var(--dark);}
+.cta-teal{background:rgba(0,180,180,0.12);color:var(--teal);border:1px solid rgba(0,180,180,0.3);}
+.cta-teal:hover{background:var(--teal);color:var(--dark);}
+
+.arrow{font-size:16px;transition:transform 0.2s;}
+.card:hover .arrow{transform:translateX(4px);}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(255,255,255,0.07);padding:40px;max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.footer-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;}
+.footer-name span{color:var(--coral);}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-link{font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none;letter-spacing:0.1em;transition:color 0.2s;}
+.footer-link:hover{color:var(--coral);}
+
+/* ANIMATIONS */
+.fi{opacity:0;transform:translateY(20px);animation:fadeUp 0.6s ease forwards;}
+.fi.d1{animation-delay:0.1s;}
+.fi.d2{animation-delay:0.2s;}
+.fi.d3{animation-delay:0.3s;}
+.fi.d4{animation-delay:0.4s;}
+.fi.d5{animation-delay:0.5s;}
+.fi.d6{animation-delay:0.6s;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="tag fi">PM Portfolio · Maipelo Letebele · Cape Town, South Africa</span>
+  <h1 class="fi d1">Three products.<br><em>Real stories.</em></h1>
+  <p class="sub fi d2">Built, shipped, and iterated on across construction, consumer goods, and technology. Each product taught a different lesson about what it means to build something people actually need.</p>
+  <div class="divider fi d3"></div>
+</header>
+
+<div class="grid">
+
+  <!-- WealthSpaces -->
+  <a href="WealthSpaces-PM-Portfolio-v2.html" class="card card-ws fi d4">
+    <div class="card-accent acc-coral"></div>
+    <div class="card-body">
+      <span class="card-num num-coral">Case Study 01</span>
+      <div class="card-title">WealthSpaces</div>
+      <div class="card-period">2019 – 2022 · Johannesburg</div>
+      <p class="card-desc">A two-sided marketplace connecting remote workers with hotels and cafes. Raised R350K, reached Top 10 downloads in SA, partnered with The Maslow, DAVINCI, and The Capital Hotels.</p>
+      <div class="card-stats">
+        <div class="stat"><span class="stat-v sv-coral">R350K</span><span class="stat-l">Raised</span></div>
+        <div class="stat"><span class="stat-v sv-coral">Top 10</span><span class="stat-l">SA Downloads</span></div>
+        <div class="stat"><span class="stat-v sv-coral">22</span><span class="stat-l">Venues</span></div>
+      </div>
+      <span class="card-cta cta-coral">View Case Study <span class="arrow">→</span></span>
+    </div>
+  </a>
+
+  <!-- Juice Bar -->
+  <a href="TheJuiceBar-PM-Portfolio.html" class="card card-juice fi d5">
+    <div class="card-accent acc-gold"></div>
+    <div class="card-body">
+      <span class="card-num num-gold">Case Study 02</span>
+      <div class="card-title">The Juice Bar</div>
+      <div class="card-period">2018 · Johannesburg Markets</div>
+      <p class="card-desc">Fresh fruit and vegetable juices sold at weekend markets. The only product in this portfolio that achieved genuine product-market fit — through observation, sampling, and data collected by hand.</p>
+      <div class="card-stats">
+        <div class="stat"><span class="stat-v sv-gold">~40</span><span class="stat-l">Customers/day</span></div>
+        <div class="stat"><span class="stat-v sv-gold">R40</span><span class="stat-l">Per bottle</span></div>
+        <div class="stat"><span class="stat-v sv-gold">✓</span><span class="stat-l">Product-market fit</span></div>
+      </div>
+      <span class="card-cta cta-gold">View Case Study <span class="arrow">→</span></span>
+    </div>
+  </a>
+
+  <!-- Minions -->
+  <a href="Minions-PM-Portfolio.html" class="card card-minions fi d6">
+    <div class="card-accent acc-teal"></div>
+    <div class="card-body">
+      <span class="card-num num-teal">Case Study 03</span>
+      <div class="card-title">Minions SA</div>
+      <div class="card-period">2012 – 2014 · Sandton, Johannesburg</div>
+      <p class="card-desc">An on-demand errand service built at university — before the gig economy had a name. Award-winning concept, right problem, wrong timing. The lesson in beachhead strategy.</p>
+      <div class="card-stats">
+        <div class="stat"><span class="stat-v sv-teal">🏆</span><span class="stat-l">Wits Award</span></div>
+        <div class="stat"><span class="stat-v sv-teal">15</span><span class="stat-l">Providers</span></div>
+        <div class="stat"><span class="stat-v sv-teal">2012</span><span class="stat-l">Pre-gig economy</span></div>
+      </div>
+      <span class="card-cta cta-teal">View Case Study <span class="arrow">→</span></span>
+    </div>
+  </a>
+
+</div>
+
+<footer>
+  <div class="footer-name">Maipelo <span>Letebele</span></div>
+  <div class="footer-links">
+    <a href="mailto:maipelo.letebele@gmail.com" class="footer-link">maipelo.letebele@gmail.com</a>
+    <a href="https://www.linkedin.com/in/maipelo-letebele-54164970" class="footer-link" target="_blank">LinkedIn</a>
+    <a href="Maipelo-Letebele-APM-CV.docx" class="footer-link">Download CV</a>
+  </div>
+</footer>
+
+</body>
+</html>

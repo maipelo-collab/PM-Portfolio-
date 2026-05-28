@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minions SA — PM Case Study | Maipelo Letebele</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#0A0A0A;--charcoal:#1A1A1A;--dark:#111;
+  --juice-gold:#C9A84C;--juice-cream:#F5F0E8;--juice-dark:#1A1208;
+  --minion-teal:#00B4B4;--minion-dark:#0A1A1A;--minion-light:#E8F8F8;
+  --white:#FFFFFF;--mid:#888;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--juice-gold);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(10,10,10,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:rgba(255,255,255,0.6);letter-spacing:0.08em;}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-label{font-size:10px;color:rgba(255,255,255,0.3);font-family:'DM Mono',monospace;letter-spacing:0.15em;text-transform:uppercase;}
+.nav-dots{display:flex;gap:6px;}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;border:none;transition:all 0.25s;}
+.nav-dot.active{background:var(--juice-gold);transform:scale(1.5);}
+.nav-dot.teal.active{background:var(--minion-teal);}
+.progress{position:fixed;top:0;left:0;height:2px;background:var(--juice-gold);z-index:200;transition:width 0.3s;}
+
+/* SLIDES */
+.slide{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:90px 48px 60px;position:relative;overflow:hidden;}
+.slide-inner{max-width:1080px;width:100%;margin:0 auto;}
+
+/* JUICE SLIDES */
+.jcover{background:var(--juice-dark);}
+.jcover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,0.08) 0%,transparent 60%);}
+.j2{background:#0D0D0D;}
+.j3{background:var(--juice-dark);}
+.j4{background:#0D0D0D;}
+.j5{background:var(--juice-dark);}
+
+/* MINION SLIDES */
+.mcover{background:var(--minion-dark);}
+.mcover::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(0,180,180,0.08) 0%,transparent 60%);}
+.m2{background:#050F0F;}
+.m3{background:var(--minion-dark);}
+.m4{background:#050F0F;}
+
+/* DIVIDER */
+.section-divider{min-height:40px;background:linear-gradient(to right,var(--juice-gold),var(--minion-teal));display:flex;align-items:center;justify-content:center;padding:0 48px;}
+.section-divider-text{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.25em;color:rgba(0,0,0,0.6);text-transform:uppercase;}
+
+/* TYPOGRAPHY */
+.sn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:14px;display:block;}
+.sn-gold{color:var(--juice-gold);}
+.sn-teal{color:var(--minion-teal);}
+.st{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,64px);font-weight:900;line-height:1.05;margin-bottom:36px;}
+.st em{font-style:italic;}
+.st.gold em{color:var(--juice-gold);}
+.st.teal em{color:var(--minion-teal);}
+p{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.75;}
+strong{color:var(--white);font-weight:600;}
+
+/* LAYOUT */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:768px){.two,.three{grid-template-columns:1fr;}}
+
+/* CARDS */
+.card{border-radius:14px;padding:24px;border:1px solid rgba(255,255,255,0.07);}
+.card-gold{background:rgba(201,168,76,0.05);border-color:rgba(201,168,76,0.15);}
+.card-teal{background:rgba(0,180,180,0.05);border-color:rgba(0,180,180,0.15);}
+.card-n{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;line-height:1;margin-bottom:8px;}
+.card-n-gold{color:var(--juice-gold);}
+.card-n-teal{color:var(--minion-teal);}
+.card-t{font-size:13px;font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;}
+.card-d{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;}
+
+/* STAT */
+.stat-gold{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:24px;text-align:center;}
+.stat-teal{background:rgba(0,180,180,0.08);border:1px solid rgba(0,180,180,0.2);border-radius:12px;padding:24px;text-align:center;}
+.stat-v{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:900;display:block;line-height:1;margin-bottom:6px;}
+.sv-gold{color:var(--juice-gold);}
+.sv-teal{color:var(--minion-teal);}
+.stat-l{font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);}
+
+/* QUOTE */
+.quote-gold{border-left:3px solid var(--juice-gold);padding:18px 22px;background:rgba(201,168,76,0.05);border-radius:0 10px 10px 0;margin:24px 0;}
+.quote-teal{border-left:3px solid var(--minion-teal);padding:18px 22px;background:rgba(0,180,180,0.05);border-radius:0 10px 10px 0;margin:24px 0;}
+.quote-gold p, .quote-teal p{font-family:'Playfair Display',serif;font-size:clamp(14px,1.6vw,17px);font-style:italic;color:rgba(255,255,255,0.85);}
+
+/* LESSON ROW */
+.lr{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.lr:last-child{border-bottom:none;}
+.lr-tag-gold{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;background:rgba(201,168,76,0.1);color:var(--juice-gold);padding:5px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.lr-tag-teal{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;background:rgba(0,180,180,0.1);color:var(--minion-teal);padding:5px 9px;border-radius:6px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+.lr-t{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.lr-d{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.55;}
+
+/* PILL */
+.pill-gold{display:inline-block;background:rgba(201,168,76,0.1);color:var(--juice-gold);font-size:12px;padding:5px 12px;border-radius:20px;margin:3px;font-family:'DM Mono',monospace;}
+.pill-teal{display:inline-block;background:rgba(0,180,180,0.1);color:var(--minion-teal);font-size:12px;padding:5px 12px;border-radius:20px;margin:3px;font-family:'DM Mono',monospace;}
+
+/* IMAGE */
+.brand-img{width:100%;border-radius:16px;object-fit:cover;display:block;}
+.logo-img{width:160px;height:160px;object-fit:contain;display:block;margin:0 auto 24px;}
+
+/* COVER STATS */
+.cstats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;}
+
+/* LBL */
+.lbl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;display:block;}
+
+/* DLINE */
+.dline-gold{width:36px;height:2px;background:var(--juice-gold);margin-bottom:24px;}
+.dline-teal{width:36px;height:2px;background:var(--minion-teal);margin-bottom:24px;}
+
+/* SCROLL HINT */
+.sh{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.2);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;animation:sb 2s infinite;}
+.shl{width:1px;height:24px;background:linear-gradient(to bottom,rgba(255,255,255,0.2),transparent);}
+@keyframes sb{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(5px);}}
+
+/* ANIMATIONS */
+.fi{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+.fi.vis{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.08s;}.d2{transition-delay:0.16s;}.d3{transition-delay:0.24s;}.d4{transition-delay:0.32s;}
+
+/* CLOSING */
+.close-grid{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin:40px 0;}
+.close-item{text-align:center;}
+.close-val{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:900;}
+.close-lbl{font-size:10px;color:rgba(255,255,255,0.3);font-family:'DM Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;margin-top:3px;}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav>
+  <div class="nav-logo"><a href="index.html" style="color:inherit;text-decoration:none;">← Portfolio</a> &nbsp;·&nbsp; Minions SA</div>
+  <div class="nav-right">
+    <span class="nav-label">Case Study 03</span>
+    <div class="nav-dots" id="navDots"></div>
+  </div>
+</nav>
+
+<!-- ═══ MINIONS ═══ -->
+
+<!-- M1: COVER -->
+<section class="slide mcover" id="s6">
+  <div class="slide-inner">
+    <div class="two" style="align-items:center;">
+      <div>
+        <span class="sn sn-teal fi">Case Study 03 · 2012–2014 · Johannesburg</span>
+        <h1 class="st teal fi d1"><em>Minions.</em><br>Helping you get<br>things done.</h1>
+        <p class="fi d2">An on-demand errand and personal assistant service built by university students — before the gig economy had a name. The right problem, built for too broad a market, at the wrong time. An award-winning idea that taught us everything about beachhead strategy.</p>
+        <div class="cstats fi d3">
+          <div class="stat-teal"><span class="stat-v sv-teal">🏆</span><span class="stat-l">Wits Award</span></div>
+          <div class="stat-teal"><span class="stat-v sv-teal">15</span><span class="stat-l">Service Providers</span></div>
+          <div class="stat-teal"><span class="stat-v sv-teal">2012</span><span class="stat-l">Before Uber Eats</span></div>
+        </div>
+      </div>
+      <div class="fi d2" style="text-align:center;">
+        <div style="background:rgba(0,180,180,0.08);border:1px solid rgba(0,180,180,0.2);border-radius:24px;padding:48px 32px;">
+          <div style="font-family:'Playfair Display',serif;font-size:72px;font-weight:900;color:var(--minion-teal);line-height:1;">M</div>
+          <div style="font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.2em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-top:8px;">MINIONS</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:6px;font-family:'DM Mono',monospace;">'helping you get things done'</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sh" style="color:rgba(0,180,180,0.3);"><div class="shl" style="background:linear-gradient(to bottom,rgba(0,180,180,0.3),transparent);"></div>Scroll</div>
+</section>
+
+<!-- M2: THE PROBLEM & SOLUTION -->
+<section class="slide m2" id="s7">
+  <div class="slide-inner">
+    <span class="sn sn-teal fi">01 · The Problem</span>
+    <h2 class="st teal fi d1">The right idea.<br><em>The right time?</em></h2>
+    <div class="two">
+      <div>
+        <p class="fi d2" style="font-size:16px;margin-bottom:24px;">South Africa had two persistent and connected problems — busy professionals with no time for errands, and high youth unemployment creating a pool of capable people who needed flexible income. Minions was designed to bridge them through an on-demand task platform.</p>
+        <div class="quote-teal fi d3">
+          <p>"We were building what would later become the gig economy — in South Africa, in 2012, before smartphones were ubiquitous and before the category had a name. The problem was real. The timing and execution were the challenge."</p>
+        </div>
+        <div style="margin-top:24px;" class="fi d4">
+          <span class="lbl">Services offered</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;">
+            <span class="pill-teal">Personal errands</span>
+            <span class="pill-teal">Shopping and groceries</span>
+            <span class="pill-teal">Deliveries and drop-offs</span>
+            <span class="pill-teal">Baby and house sitting</span>
+            <span class="pill-teal">Dog walking</span>
+            <span class="pill-teal">Event hosting</span>
+          </div>
+        </div>
+      </div>
+      <div class="fi d3">
+        <span class="lbl">What we actually built</span>
+        <div class="card card-teal" style="margin-bottom:14px;">
+          <div class="card-n card-n-teal">15</div>
+          <div class="card-t">Service Providers Recruited</div>
+          <div class="card-d">Vetted university students and young professionals — screened with ID, police clearance, face-to-face interview, and reference checks. A rigorous trust and safety model.</div>
+        </div>
+        <div class="card card-teal" style="margin-bottom:14px;">
+          <div class="card-n card-n-teal">1</div>
+          <div class="card-t">Corporate Client Secured</div>
+          <div class="card-d">A conferencing company requiring event hosts, flyer distribution, and logistical support. Real B2B revenue at university age.</div>
+        </div>
+        <div class="card card-teal">
+          <div class="card-n card-n-teal">🏆</div>
+          <div class="card-t">Wits Business Society Award</div>
+          <div class="card-d">Won the entrepreneurship competition at the University of the Witwatersrand. The judges saw the vision — even if the execution needed sharpening.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- M3: WHAT WENT WRONG -->
+<section class="slide m3" id="s8">
+  <div class="slide-inner">
+    <span class="sn sn-teal fi">02 · Honest Reflection</span>
+    <h2 class="st teal fi d1">Right problem.<br><em>Wrong approach.</em></h2>
+    <p class="fi d2" style="max-width:620px;margin-bottom:36px;">Minions failed not because the problem didn't exist — it absolutely did. It failed because we tried to solve it for everyone at once, without the infrastructure the market needed, ahead of its time.</p>
+    <div class="fi d3">
+      <div class="lr">
+        <div class="lr-tag-teal">No Beachhead</div>
+        <div><div class="lr-t">We tried to serve everyone — students, professionals, corporates, organisations.</div><div class="lr-d">Serving everyone means serving no one exceptionally. We needed one user, one problem, one solution. Had we targeted only law firms or busy mothers we'd have had a defensible market entry.</div></div>
+      </div>
+      <div class="lr">
+        <div class="lr-tag-teal">Market Timing</div>
+        <div><div class="lr-t">In 2012 most South Africans weren't yet transacting on mobile platforms.</div><div class="lr-d">The infrastructure for on-demand services — smartphones, digital payments, always-on connectivity — wasn't yet mainstream. The problem was real but the enabling technology wasn't ready at scale.</div></div>
+      </div>
+      <div class="lr">
+        <div class="lr-tag-teal">Unit Economics</div>
+        <div><div class="lr-t">Pricing between R70–R200 per errand without a clear cost structure.</div><div class="lr-d">A sustainable marketplace requires predictable take rates and margins. We hadn't modelled the unit economics before launching.</div></div>
+      </div>
+      <div class="lr">
+        <div class="lr-tag-teal">Founder Dependency</div>
+        <div><div class="lr-t">The business ended when co-founders graduated and entered corporate employment.</div><div class="lr-d">Without a succession plan or external team the business was entirely dependent on its founders being available. No operational scalability.</div></div>
+      </div>
+    </div>
+    <div class="quote-teal fi d4" style="margin-top:28px;">
+      <p>"Had we launched today — with smartphones in every pocket, a normalised gig economy, and digital payment infrastructure — the conditions would have been far more favourable. The insight wasn't wrong. The timing was."</p>
+    </div>
+  </div>
+</section>
+
+<!-- M4: CLOSING -->
+<section class="slide m4" id="s9">
+  <div class="slide-inner" style="text-align:center;">
+    <span class="sn sn-teal fi" style="display:block;text-align:center;">03 · The Through-Line</span>
+    <h2 class="st teal fi d1" style="text-align:center;">Three products.<br><em>One lesson.</em></h2>
+    <p class="fi d2" style="max-width:580px;margin:0 auto 48px;font-size:16px;">Across WealthSpaces, The Juice Bar, and Minions — the pattern is the same. A great product requires the right problem, a specific user, validated before building, and the right environment to grow in. Get any one of those wrong and even a great idea fails.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:800px;margin:0 auto 48px;" class="fi d3">
+      <div class="card card-gold" style="text-align:left;">
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--juice-gold);margin-bottom:8px;">WealthSpaces</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;">Skipped problem validation before building at scale.</div>
+      </div>
+      <div class="card card-gold" style="text-align:left;">
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--juice-gold);margin-bottom:8px;">The Juice Bar</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;">Validated the problem. Iterated on data. Found product-market fit.</div>
+      </div>
+      <div class="card card-teal" style="text-align:left;">
+        <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--minion-teal);margin-bottom:8px;">Minions</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;">Right problem. No beachhead. Ahead of the infrastructure.</div>
+      </div>
+    </div>
+    <div style="padding-top:40px;border-top:1px solid rgba(255,255,255,0.07);" class="fi d4">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px;">Portfolio by</div>
+      <div style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--white);">Maipelo Letebele</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.35);margin-top:4px;">Associate Product Manager · Cape Town</div>
+      <div style="font-size:13px;color:var(--minion-teal);margin-top:4px;font-family:'DM Mono',monospace;">maipelo.letebele@gmail.com</div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const navDots=document.getElementById('navDots');
+const progress=document.getElementById('progress');
+const labels=['Cover','The Problem','Reflection','Closing'];
+
+slides.forEach((_,i)=>{
+  const d=document.createElement('button');
+  d.className='nav-dot teal'+(i===0?' active':'');
+  d.title=labels[i];
+  d.addEventListener('click',()=>slides[i].scrollIntoView({behavior:'smooth'}));
+  navDots.appendChild(d);
+});
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx=Array.from(slides).indexOf(e.target);
+      document.querySelectorAll('.nav-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+      progress.style.width=((idx+1)/slides.length*100)+'%';
+      progress.style.background='var(--minion-teal)';
+    }
+  });
+},{threshold:0.5});
+slides.forEach(s=>obs.observe(s));
+
+const fobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});
+},{threshold:0.1});
+document.querySelectorAll('.fi').forEach(el=>fobs.observe(el));
+</script>
+</body>
+</html>
