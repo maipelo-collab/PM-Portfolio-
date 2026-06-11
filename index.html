@@ -7,7 +7,7 @@
 
   <!-- LinkedIn / Open Graph Preview -->
   <meta property="og:title" content="Maipelo Letebele — PM Portfolio" />
-  <meta property="og:description" content="Four real products. Built, shipped, and iterated on. Heirloom · WealthSpaces · The Juice Bar · Minions SA." />
+  <meta property="og:description" content="Four real products. Built, shipped, and iterated on. WealthSpaces · The Juice Bar · Minions SA · Heirloom." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://maipelo-collab.github.io/PM-Portfolio-/" />
   <meta property="og:image" content="https://maipelo-collab.github.io/PM-Portfolio-/preview.png" />
@@ -26,6 +26,8 @@
   --coral:#E8634A;
   --gold:#C9A84C;
   --teal:#00B4B4;
+  --burgundy:#6B1D3E;
+  --burgundy-pale:#F5E8EE;
   --mid:#888;
   --white:#fff;
   --cream:#FAF7F2;
@@ -48,21 +50,24 @@ h1 em{color:var(--coral);font-style:italic;}
 .card{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;text-decoration:none;display:block;transition:transform 0.25s;}
 .card:hover{transform:translateY(-6px);}
 
-/* WealthSpaces card */
+/* Card styles */
 .card-ws{background:var(--navy);border:1px solid rgba(232,99,74,0.2);}
 .card-juice{background:#1A1208;border:1px solid rgba(201,168,76,0.2);}
 .card-minions{background:#0A1A1A;border:1px solid rgba(0,180,180,0.2);}
+.card-heirloom{background:#1A0D12;border:1px solid rgba(107,29,62,0.4);}
 
 .card-accent{height:3px;width:100%;}
 .acc-coral{background:var(--coral);}
 .acc-gold{background:var(--gold);}
 .acc-teal{background:var(--teal);}
+.acc-burgundy{background:linear-gradient(90deg,var(--burgundy),#B8975A);}
 
 .card-body{padding:32px;}
 .card-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;display:block;}
 .num-coral{color:var(--coral);}
 .num-gold{color:var(--gold);}
 .num-teal{color:var(--teal);}
+.num-burgundy{color:#C4829A;}
 
 .card-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--white);line-height:1.1;margin-bottom:8px;}
 .card-period{font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;margin-bottom:20px;}
@@ -74,6 +79,8 @@ h1 em{color:var(--coral);font-style:italic;}
 .sv-coral{color:var(--coral);}
 .sv-gold{color:var(--gold);}
 .sv-teal{color:var(--teal);}
+.sv-burgundy{color:#C4829A;}
+
 .stat-l{font-size:10px;color:rgba(255,255,255,0.3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;}
 
 .card-cta{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;font-family:'DM Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;border-radius:8px;transition:all 0.2s;}
@@ -83,6 +90,13 @@ h1 em{color:var(--coral);font-style:italic;}
 .cta-gold:hover{background:var(--gold);color:var(--dark);}
 .cta-teal{background:rgba(0,180,180,0.12);color:var(--teal);border:1px solid rgba(0,180,180,0.3);}
 .cta-teal:hover{background:var(--teal);color:var(--dark);}
+.cta-burgundy{background:rgba(107,29,62,0.2);color:#C4829A;border:1px solid rgba(107,29,62,0.5);}
+.cta-burgundy:hover{background:var(--burgundy);color:var(--white);}
+
+/* Live badge on Heirloom card */
+.live-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(45,106,79,0.2);border:1px solid rgba(45,106,79,0.4);border-radius:20px;padding:4px 10px;font-size:10px;font-family:'DM Mono',monospace;color:#6EC99A;letter-spacing:0.1em;margin-bottom:20px;}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#6EC99A;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
 
 .arrow{font-size:16px;transition:transform 0.2s;}
 .card:hover .arrow{transform:translateX(4px);}
@@ -103,6 +117,7 @@ footer{border-top:1px solid rgba(255,255,255,0.07);padding:40px;max-width:1080px
 .fi.d4{animation-delay:0.4s;}
 .fi.d5{animation-delay:0.5s;}
 .fi.d6{animation-delay:0.6s;}
+.fi.d7{animation-delay:0.7s;}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
@@ -110,7 +125,7 @@ footer{border-top:1px solid rgba(255,255,255,0.07);padding:40px;max-width:1080px
 
 <header>
   <span class="tag fi">PM Portfolio · Maipelo Letebele · Cape Town, South Africa</span>
-  <h1 class="fi d1">Three products.<br><em>Real stories.</em></h1>
+  <h1 class="fi d1">Four products.<br><em>Real stories.</em></h1>
   <p class="sub fi d2">Built, shipped, and iterated on across construction, consumer goods, and technology. Each product taught a different lesson about what it means to build something people actually need.</p>
   <div class="divider fi d3"></div>
 </header>
@@ -165,6 +180,24 @@ footer{border-top:1px solid rgba(255,255,255,0.07);padding:40px;max-width:1080px
         <div class="stat"><span class="stat-v sv-teal">2012</span><span class="stat-l">Pre-gig economy</span></div>
       </div>
       <span class="card-cta cta-teal">View Case Study <span class="arrow">→</span></span>
+    </div>
+  </a>
+
+  <!-- Heirloom -->
+  <a href="Heirloom-PM-Portfolio.html" class="card card-heirloom fi d7">
+    <div class="card-accent acc-burgundy"></div>
+    <div class="card-body">
+      <span class="card-num num-burgundy">Case Study 04</span>
+      <div class="card-title">heirloom.</div>
+      <div class="card-period">2026 · Cape Town</div>
+      <div class="live-badge"><span class="live-dot"></span> Live Research</div>
+      <p class="card-desc">A secure preservation vault for physical handwritten journals. Built from scratch using the full PM pipeline — discovery, competitive analysis, live survey, PRD, and user flow.</p>
+      <div class="card-stats">
+        <div class="stat"><span class="stat-v sv-burgundy">56+</span><span class="stat-l">Data Points</span></div>
+        <div class="stat"><span class="stat-v sv-burgundy">47</span><span class="stat-l">Requirements</span></div>
+        <div class="stat"><span class="stat-v sv-burgundy">🔴</span><span class="stat-l">Active</span></div>
+      </div>
+      <span class="card-cta cta-burgundy">View Case Study <span class="arrow">→</span></span>
     </div>
   </a>
 
